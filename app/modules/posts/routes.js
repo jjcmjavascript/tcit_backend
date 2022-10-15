@@ -1,4 +1,4 @@
-module.exports = (controller)=>{
+module.exports = (controller, middlewares)=>{
     return [
         {
             method: 'get',
@@ -8,11 +8,13 @@ module.exports = (controller)=>{
         {
             method: 'post',
             path: '/posts',
+            middlewares: middlewares.create,
             handler: async (req, res)=> controller.createPost(req, res),
         },
         {
             method: 'delete',
             path: '/posts/:id',
+            middlewares: middlewares.delete,
             handler: async (req, res)=> controller.deletePost(req, res),
         }
     ]; 
