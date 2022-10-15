@@ -1,6 +1,4 @@
-const { posts } = require('../../services/database');
-
-module.exports = () => {
+module.exports = ({posts}) => {
     return {
         async findAll(){
             return posts.findAll();
